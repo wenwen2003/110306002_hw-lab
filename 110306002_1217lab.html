@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>
+		Calculator
+	</title>
+	<link rel = "stylesheet" type = "text/css" href = "1217lab.style.css">
+</head>
+<body>
+	<span>
+	<div style="border-color:brown;border-style: solid;border-width:3px;padding:10px;width:400px;height:400px;">
+ 	<center><p><b><font face="monospace" size="10">
+  	JS calculator
+ 	</b></p></font>
+  	<form action="#">
+	<label><em>
+ 	Number 1<br></em>
+	<input id = "number1" type = "text" size = "40" maxlength="50"><br></label> 
+	<label><em>
+	Number 2<br></em>
+	<input id = "number2" type = "text" size = "40" maxlength="50"><br></label>
+	<label>
+ 	Operate way?<br>
+	<select name = "selection" id = "list" onchange="setButton(this.value)">
+ 	 <option value = "plus">+</option>
+ 	 <option value = "minus">-</option>
+ 	 <option value = "product">*</option>
+ 	 <option value = "divide">/</option></label></select>
+	<br><input type = "button" style = "width: 400px;" id = "btn" value = "Add" onclick = "calculate()" class="button"></br>
+ 	</form>
+ 	<div id = "result">
+  		<div>Result</div>
+ 	</div>
+	</center>
+	</div>
+	<script type="text/javascript">
+		var operator = document.getElementById("list");
+		var answer;
+		
+		function calculate(){
+			var first = parseInt(document.getElementById("number1").value);
+			var second = parseInt(document.getElementById("number2").value);
+			if(operator.value == "plus"){
+				answer = first + second;
+				output();
+			}
+			else if(operator.value == "minus"){
+				answer = first - second;
+				output();
+			}
+			else if(operator.value == "product"){
+				answer = first * second;
+				output();
+			}
+			else if(operator.value == "divide"){
+				answer = first / second;
+				output();
+			}
+		}
+
+		function output(){
+			var newLine = document.createElement('div');
+			var textNode = document.createTextNode(answer);
+			newLine.appendChild(textNode);
+			document.getElementById('result').appendChild(newLine);
+		}
+
+		function setButton(val){
+			var button = document.getElementById('btn');
+
+			if(val == "plus"){
+				button.value = "Add";
+			}
+			else if(val == "minus"){
+				button.value = "Minus";
+			}
+			else if(val == "product"){
+				button.value = "Product";
+			}
+			else if(val == "divide"){
+				button.value = "Divide";
+			}
+		}
+
+	</script>
+</span>
+</body>
+</html>

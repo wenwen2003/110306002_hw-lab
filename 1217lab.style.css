@@ -1,0 +1,19 @@
+.button{
+	background-color: #403d39;
+	color: white;
+}
+
+.button:hover{
+	background-color: darkred;
+}
+
+body{
+	display: flex;
+    justify-content: center; 
+    align-items: center; 
+}
+span{
+	background-color: greenyellow;
+	text-align: center;
+	border-width:10px;
+}

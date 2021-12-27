@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport">
+    <title>
+        NumguessingGame
+    </title>
+    <link rel = "stylesheet" type = "text/css" href = "1217hw.style.css">
+</head>
+<body>
+    <div class = "all">
+    <h1><font face="monospace">Guessing Game</h1></font>
+    Your Guess(1~100)
+    <input type="text" id="textfield">
+    <input type="button" id="btn" value="play" class = "button">
+    <p id = "consequence"></p>
+    <div id = "result" class = "result">
+        <div>Result: </div>
+    </div>
+    <p id="log"></p>
+    <script type="text/javascript">
+        var answer = randomNumber(1,100);
+        var max = 100;
+        var min = 0;
+        window.onload = guessIt();
+        const log = document.getElementById('log');
+        function addElement(){
+            var newDiv = document.createElement("div");
+            var newContent = document.createTextNode("Hi there and greetings!");
+            newDiv.appendChild(newContent);
+            var currentDiv = document.getElementById("div1");
+            document.body.insertBefore(newDiv, currentDiv);
+        }
+        
+
+        function guessIt() {
+        document.getElementById('btn').onclick = function(evt) {
+        guessAnswer();
+        }
+    }
+        
+        function randomNumber(min, max) {
+        return Math.floor(Math.random() * (max-min)) + min
+    }
+        function guessAnswer() {
+        var textNum = document.getElementById('textfield').value;
+        var textToInt = parseInt(textNum);
+
+        if(textToInt > max || textToInt < min){
+            document.getElementById("consequence").innerHTML = "Please type between " + min + " and " + max + " .";
+        }
+        else if (textToInt < answer) {
+            min = textToInt;
+            output();
+            count++;
+        } else if (textToInt == answer) {
+            alert("Correct!");
+            window.location.reload();
+        } else if (textToInt > answer) {
+            max = textToInt;
+            output();
+            count++;
+        } else if (!textToInt) {
+            document.getElementById("consequence").innerHTML = "Please type in a correct number.";
+        }
+
+        function output(){
+            var newLine = document.createElement('div');
+            var textNode = document.createTextNode(min + '~' + max);
+            newLine.appendChild(textNode);
+            document.getElementById('result').appendChild(newLine);
+        }
+    }
+    </script>
+</div>
+</body>
+</html>
